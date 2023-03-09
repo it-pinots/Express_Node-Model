@@ -1,0 +1,82 @@
+# *Créer votre première application web NodeJS avec Express*
+
+<details open>
+    <summary><h2>Documentation</h2></summary>
+        <ul>
+            <li><a href="https://expressjs.com"><span><strong>Express Doc</strong></span></a>
+            <p>Express est un framework d'application web Node.js minimal et flexible qui offre un ensemble de fonctionnalités robustes pour les applications web et mobiles.</p>
+            </li>
+            <li><a href="https://learn.microsoft.com/fr-fr/windows/dev-environment/javascript/nodejs-beginners-tutorial"><span><strong>Microsoft : Bien démarrer avec NodeJS </strong></span></a>
+            <p>Node.js est un environnement d’exécution JavaScript côté serveur, multiplateforme et open source, basé sur le moteur JavaScript V8 de Chrome créé à l’origine par Ryan Dahl et publié dans 2009.</p>
+            </li>
+        </ul>
+</details>
+
+**Express** est une infrastructure **Node.js** minimale, flexible et rationalisée qui facilite le développement d’une application web pouvant traiter plusieurs types de requêtes, notamment **GET**, **PUT**, **POST** et **DELETE**. **Express** est fourni avec un générateur d’applications qui crée automatiquement une architecture de fichiers pour l’application.
+
+## 1.0 Installer Express
+
+1. Utilisez **Express** pour créer un modèle de projet :
+
+    `npx express-generator MyProjet --view=pug`
+
+:warning: N'ouvliez pas de changer le nom de votre projet (**MyProjet**) !!
+
+<br>
+
+>Option : Si vous souhaitez procéder à une installation globale
+>`npm install -g express-generator`
+
+
+<br>
+
+## 2.0 Version d'express
+
+`express --version`
+
+<br>
+
+### 3.0 Examinez les fichiers et dossiers inclus dans le projet **Express**
+
+<br>
+
+Les fichiers générés par **Express** créent une application web dont l'architecture qui peut sembler impressionnante au premier abord.
+
+- `bin` contient le fichier exécutable qui lance l’application. Il déclenche un serveur (sur le port 3000 si aucun autre n’est indiqué) et configure la gestion des erreurs de base.
+
+- `public` contient tous les fichiers publiquement accessibles, notamment les fichiers JavaScript, les feuilles de style CSS, les fichiers de police, les images et toutes les autres ressources nécessaires à tous ceux qui se connectent au site web.
+
+- `routes` contient tous les gestionnaires de routage de l’application. Deux fichiers, `index.js` et `users.js`, sont automatiquement générés dans ce dossier pour servir d’exemples illustrant la séparation de la configuration du routage de l’application.
+
+- `views` contient les fichiers utilisés par le moteur de modèle. Express est configuré pour rechercher à cet endroit une vue correspondante lorsque la méthode de rendu est appelée. Le moteur de modèle par défaut est Jade, mais il a été déprécié au profit de Pug. Nous utilisons donc l’indicateur `--view` pour modifier le moteur d’affichage (de modèle). Pour voir les options d’indicateur `--view`, entre autres, utilisez `express --help`.
+
+- `app.js` point de départ de l’application. Il charge tout et commence à traiter les demandes des utilisateurs. C’est en somme le ciment qui maintient toutes les pièces ensemble.
+
+- `package.json` contient la description du projet, le gestionnaire de scripts et le manifeste de l’application. Son rôle principal est d’assurer le suivi des dépendances de l’application et de leurs versions respectives.
+
+### 4.0 Installez les dépendances du package **Express**
+
+`npm install`
+
+### 5.0 L’infrastructure
+
+Est maintenant définie pour une application web de plusieurs pages ayant accès à un large éventail d’**API**, de méthodes utilitaires **HTTP** et d’intergiciels (**middleware**), ce qui facilite la création d’une **API** robuste. Démarrez l'application **Express** sur un serveur virtuel en entrant :
+
+`npx cross-env DEBUG=MyProjet:* npm start`
+
+:warning: N'ouvliez pas de changer le nom de votre projet (**MyProjet**) !!
+
+
+### 6.0 Server Local
+
+Vous pouvez maintenant afficher l'application exécutée en ouvrant un navigateur web et en accédant à
+
+ `localhost: 3000`
+
+ ### 7.0 Servir des fichiers statiques dans **Express**
+
+Pour servir des fichiers statiques tels que les images, les fichiers CSS et les fichiers JavaScript, utilisez la fonction de logiciel intermédiaire intégré express.static dans **Express**.
+
+Ajouter dans **app.js**
+
+`app.use(express.static('public'));`
